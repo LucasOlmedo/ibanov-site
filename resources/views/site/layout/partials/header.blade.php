@@ -21,7 +21,7 @@
                 <li><a href="#gallery">Gallery</a></li>
 {{--                <li><a href="#sponsors">Sponsors</a></li>--}}
                 <li><a href="#contact">Contact</a></li>
-{{--                <li class="buy-tickets"><a href="#buy-tickets">Buy Tickets</a></li>--}}
+                <li class="buy-tickets"><a href="#"><i class="fa fa-lock"></i></a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
