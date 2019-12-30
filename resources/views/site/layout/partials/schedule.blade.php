@@ -25,7 +25,7 @@
                     <div class="col-md-2"><time>08:00 PM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/6.jpg" alt="Willow Trantow">
+                            <img src="img/venue-gallery/6.jpg" alt="Willow Trantow">
                         </div>
                         <h4>Reunião de ensino bíblico <br><span>Willow Trantow</span></h4>
                         <p>Voluptatem et alias dolorum est aut sit enim neque veritatis.</p>
@@ -39,7 +39,7 @@
                     <div class="col-md-2"><time>09:00 AM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/3.jpg" alt="Cole Emmerich">
+                            <img src="img/venue-gallery/3.jpg" alt="Cole Emmerich">
                         </div>
                         <h4>Jejum e oração <br><span>Cole Emmerich</span></h4>
                         <p>Veniam accusantium laborum nihil eos eaque accusantium aspernatur.</p>
@@ -49,7 +49,7 @@
                     <div class="col-md-2"><time>04:00 PM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/4.jpg" alt="Jack Christiansen">
+                            <img src="img/venue-gallery/4.jpg" alt="Jack Christiansen">
                         </div>
                         <h4>Ensaio Grupo de louvor Na Contramão <br><span>Jack Christiansen</span></h4>
                         <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
@@ -59,7 +59,7 @@
                     <div class="col-md-2"><time>07:30 PM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/5.jpg" alt="Alejandrin Littel">
+                            <img src="img/venue-gallery/5.jpg" alt="Alejandrin Littel">
                         </div>
                         <h4>Culto com os ministérios da igreja <br><span>Alejandrin Littel</span></h4>
                         <p>Eligendi quo eveniet est nobis et ad temporibus odio quo.</p>
@@ -73,7 +73,7 @@
                     <div class="col-md-2"><time>10:00 AM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/2.jpg" alt="Hubert Hirthe">
+                            <img src="img/venue-gallery/2.jpg" alt="Hubert Hirthe">
                         </div>
                         <h4>Ensaio Grupo de louvor da igreja <br><span>Hubert Hirthe</span></h4>
                         <p>Maiores dignissimos neque qui cum accusantium ut sit sint inventore.</p>
@@ -83,7 +83,7 @@
                     <div class="col-md-2"><time>05:00 PM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/1.jpg" alt="Brenden Legros">
+                            <img src="img/venue-gallery/1.jpg" alt="Brenden Legros">
                         </div>
                         <h4>Reunião de Jovens/Adolescentes Na Contramão <br><span>Brenden Legros</span></h4>
                         <p>Facere provident incidunt quos voluptas.</p>
@@ -93,7 +93,7 @@
                     <div class="col-md-2"><time>06:30 PM</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/speakers/4.jpg" alt="Jack Christiansen">
+                            <img src="img/venue-gallery/4.jpg" alt="Jack Christiansen">
                         </div>
                         <h4>Culto da família <br><span>Jack Christiansen</span></h4>
                         <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
