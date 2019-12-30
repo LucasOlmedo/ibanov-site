@@ -2,16 +2,12 @@
       Contact Section
     ============================-->
 <section id="contact" class="section-bg wow fadeInUp">
-
     <div class="container">
-
         <div class="section-header">
-            <h2>Contact Us</h2>
+            <h2>Contato</h2>
             <p>Nihil officia ut sint molestiae tenetur.</p>
         </div>
-
         <div class="row contact-info">
-
             <div class="col-md-4">
                 <div class="contact-address">
                     <i class="ion-ios-location-outline"></i>
@@ -19,7 +15,6 @@
                     <address>A108 Adam Street, NY 535022, USA</address>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="contact-phone">
                     <i class="ion-ios-telephone-outline"></i>
@@ -27,7 +22,6 @@
                     <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="contact-email">
                     <i class="ion-ios-email-outline"></i>
@@ -35,9 +29,7 @@
                     <p><a href="mailto:info@example.com">info@example.com</a></p>
                 </div>
             </div>
-
         </div>
-
         <div class="form">
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
@@ -63,6 +55,5 @@
                 <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
         </div>
-
     </div>
 </section><!-- #contact -->

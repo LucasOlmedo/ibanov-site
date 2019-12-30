@@ -4,7 +4,7 @@
 <section id="venue" class="wow fadeInUp">
     <div class="container-fluid">
         <div class="section-header">
-            <h2>Event Venue</h2>
+            <h2>Localização</h2>
             <p>Event venue location info and gallery</p>
         </div>
         <div class="row no-gutters">

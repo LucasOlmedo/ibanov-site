@@ -5,10 +5,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h2>About The Event</h2>
+                <h2>Sobre nós</h2>
                 <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
-                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in
-                    est ut optio sequi unde.</p>
+                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
+                    inventore in est ut optio sequi unde.</p>
+                <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
+                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
+                    inventore in est ut optio sequi unde. Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
+                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
+                    inventore in est ut optio sequi unde.</p>
+                <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
+                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
+                    inventore in est ut optio sequi unde.</p>
             </div>
             <div class="col-lg-3">
                 <h3>Where</h3>

@@ -4,7 +4,7 @@
 <section id="schedule">
     <div class="container wow fadeInUp">
         <div class="section-header">
-            <h2>Event Schedule</h2>
+            <h2>Nossas reuniões</h2>
             <p>Here is our event schedule</p>
         </div>
         <ul class="nav nav-tabs" role="tablist">
