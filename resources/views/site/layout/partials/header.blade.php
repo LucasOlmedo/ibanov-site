@@ -3,13 +3,11 @@
 ============================-->
 <header id="header">
     <div class="container">
-
         <div id="logo" class="pull-left">
             <!-- Uncomment below if you prefer to use a text logo -->
-            <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-            <a href="#intro" class="scrollto"><img src="{{ asset('img/logo.png') }}" alt="" title=""></a>
+            <h1><a href="{{ route('site.index') }}">IBA<span>NOV</span></a></h1>
+{{--            <a href="{{ route('site.index') }}" class="scrollto"><img src="{{ asset('img/logo.png') }}" alt="" title=""></a>--}}
         </div>
-
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li class="menu-active"><a href="#intro">Home</a></li>
