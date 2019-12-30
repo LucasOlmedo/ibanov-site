@@ -11,7 +11,7 @@
     <link href="{{ secure_asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="{{('css/font.css')}}" rel="stylesheet">
+    <link href="{{ secure_asset('css/font.css')}}" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="{{ secure_asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
