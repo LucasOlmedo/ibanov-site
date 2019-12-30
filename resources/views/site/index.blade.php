@@ -17,9 +17,9 @@
 
 {{--    @include('site.layout.partials.sponsors')--}}
 
-    @include('site.layout.partials.faq')
+{{--    @include('site.layout.partials.faq')--}}
 
-    @include('site.layout.partials.subscribe')
+{{--    @include('site.layout.partials.subscribe')--}}
 
 {{--    @include('site.layout.partials.buy-ticket')--}}
 

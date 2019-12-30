@@ -1,7 +1,7 @@
 <!--==========================
       Schedule Section
     ============================-->
-<section id="schedule" class="section-with-bg">
+<section id="schedule">
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h2>Event Schedule</h2>
