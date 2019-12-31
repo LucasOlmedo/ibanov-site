@@ -2,13 +2,22 @@
   <dictionary name="lcsol">
     <words>
       <w>adolescentes</w>
+      <w>algo</w>
+      <w>assunto</w>
+      <w>bonifácio</w>
       <w>bíblico</w>
+      <w>caracteres</w>
       <w>contactform</w>
       <w>contato</w>
       <w>contramão</w>
       <w>culto</w>
+      <w>digite</w>
+      <w>endereço</w>
       <w>ensaio</w>
       <w>ensino</w>
+      <w>enviada</w>
+      <w>enviar</w>
+      <w>escreva</w>
       <w>família</w>
       <w>favicons</w>
       <w>feira</w>
@@ -16,13 +25,20 @@
       <w>galeria</w>
       <w>grupo</w>
       <w>igreja</w>
+      <w>insira</w>
       <w>jejum</w>
+      <w>josé</w>
       <w>jovens</w>
       <w>localização</w>
       <w>louvor</w>
       <w>líderes</w>
+      <w>menos</w>
+      <w>mensagem</w>
       <w>ministérios</w>
+      <w>minlen</w>
       <w>nossas</w>
+      <w>obrigado</w>
+      <w>oliveira</w>
       <w>oração</w>
       <w>owlcarousel</w>
       <w>pastores</w>
@@ -34,7 +50,9 @@
       <w>sobre</w>
       <w>superfish</w>
       <w>sábado</w>
+      <w>telefone</w>
       <w>venobox</w>
+      <w>válido</w>
     </words>
   </dictionary>
 </component>

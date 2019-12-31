@@ -30,13 +30,13 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h4>Contact Us</h4>
+                    <h4>Contato</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        Av. Prof. Osvaldo de Oliveira, 375 <br>
+                        Conj. Res. José Bonifácio <br>
+                        São Paulo <br>
+                        <strong>Phone:</strong> +55 11 2961 5822<br>
+                        <strong>Email:</strong> pr.isac@superig.com.br<br>
                     </p>
                     <div class="social-links">
                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
