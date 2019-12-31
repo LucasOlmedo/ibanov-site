@@ -9,7 +9,7 @@
         </div>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Quarta-feira</a>
+                <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Quarta</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#day-2" role="tab" data-toggle="tab">Sábado</a>

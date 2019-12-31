@@ -5,19 +5,9 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 footer-info">
+                <div class="col-lg-6 col-md-6 footer-info">
                     <img src="{{ asset('img/logo.png') }}" alt="TheEvenet">
                     <p>In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.</p>
-                </div>
-                <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Home</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">About us</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Services</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
-                    </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Useful Links</h4>
@@ -35,7 +25,7 @@
                         Av. Prof. Osvaldo de Oliveira, 375 <br>
                         Conj. Res. José Bonifácio <br>
                         São Paulo <br>
-                        <strong>Phone:</strong> +55 11 2961 5822<br>
+                        <strong>Telefone:</strong> +55 11 2961 5822<br>
                         <strong>Email:</strong> pr.isac@superig.com.br<br>
                     </p>
                     <div class="social-links">

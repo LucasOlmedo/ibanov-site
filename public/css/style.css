@@ -380,6 +380,10 @@ h6 {
     color: #fff;
 }
 
+#mobile-nav-toggle.mobile-scrolled i {
+    color: black !important;
+}
+
 /* Mobile Nav Styling */
 
 #mobile-nav {
@@ -388,7 +392,7 @@ h6 {
     padding-top: 18px;
     bottom: 0;
     z-index: 998;
-    background: rgba(6, 12, 34, 0.9);
+    background: #fff;
     left: -260px;
     width: 260px;
     overflow-y: auto;
@@ -406,7 +410,7 @@ h6 {
 }
 
 #mobile-nav ul li a {
-    color: #fff;
+    color: black;
     font-size: 17px;
     overflow: hidden;
     padding: 10px 22px 10px 15px;
