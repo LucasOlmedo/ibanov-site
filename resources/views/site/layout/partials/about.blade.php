@@ -1,6 +1,3 @@
-<!--==========================
-      About Section
-    ============================-->
 <section id="about">
     <div class="container">
         <div class="row">
@@ -17,14 +14,10 @@
                     será a base de todas as ações da Igreja.</p>
             </div>
             <div class="col-lg-6">
-                <h3>Campanha do templo</h3>
+                <h2>Campanha do templo</h2>
                 <p>Se você deseja participar da Campanha da Construção do Templo entre no link CAMPANHA DO TEMPLO e
                     junte-se a nós nesta bonita obra que resultará em muitas vidas para Cristo, o Senhor!</p>
             </div>
-{{--            <div class="col-lg-3">--}}
-{{--                <h3>When</h3>--}}
-{{--                <p>Monday to Wednesday<br>10-12 December</p>--}}
-{{--            </div>--}}
         </div>
     </div>
 </section>

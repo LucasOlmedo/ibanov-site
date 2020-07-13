@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section-header">
             <h2>Contato</h2>
-            <p>Nihil officia ut sint molestiae tenetur.</p>
+            <p>Deixe aqui sua mensagem</p>
         </div>
         <div class="row contact-info">
             <div class="col-md-4">
@@ -26,7 +26,7 @@
                 <div class="contact-email">
                     <i class="ion-ios-email-outline"></i>
                     <h3>Email</h3>
-                    <p><a href="mailto:pr.isac@superig.com.br">pr.isac@superig.com.br</a></p>
+                    <p><a href="mailto:ibanov-sp@hotmail.com">ibanov-sp@hotmail.com</a></p>
                 </div>
             </div>
         </div>

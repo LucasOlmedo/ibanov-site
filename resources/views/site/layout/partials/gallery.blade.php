@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section-header">
             <h2>Galeria de fotos</h2>
-            <p>Check our gallery from the recent events</p>
+            <p>Registro de algumas de nossas reuniões</p>
         </div>
     </div>
     <div class="owl-carousel gallery-carousel">

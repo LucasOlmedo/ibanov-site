@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section-header">
             <h2>Pastores</h2>
-            <p>Here are some of our speakers</p>
+            <p>Homens capacitados por Deus</p>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -13,7 +13,7 @@
                     <img src="img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
                     <div class="details">
                         <h3><a href="#">Bispo Isac de Souza</a></h3>
-                        <p>Quas alias incidunt</p>
+                        <br>
                         <div class="social">
                             <a href=""><i class="fa fa-twitter"></i></a>
                             <a href=""><i class="fa fa-facebook"></i></a>
@@ -28,7 +28,7 @@
                     <img src="img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
                     <div class="details">
                         <h3><a href="#">Pastor Jaime Nascimento</a></h3>
-                        <p>Consequuntur odio aut</p>
+                        <br>
                         <div class="social">
                             <a href=""><i class="fa fa-twitter"></i></a>
                             <a href=""><i class="fa fa-facebook"></i></a>

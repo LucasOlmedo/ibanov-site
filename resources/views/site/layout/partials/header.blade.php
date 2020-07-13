@@ -10,7 +10,7 @@
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#intro">Home</a></li>
+                <li class="menu-active"><a href="#intro">Principal</a></li>
                 <li><a href="#about">Sobre nós</a></li>
                 <li><a href="#speakers">Pastores</a></li>
                 <li><a href="#schedule">Nossas reuniões</a></li>
