@@ -6,26 +6,25 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2>Sobre nós</h2>
-                <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
-                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
-                    inventore in est ut optio sequi unde.</p>
-                <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
-                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
-                    inventore in est ut optio sequi unde. Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
-                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
-                    inventore in est ut optio sequi unde.</p>
-                <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
-                    accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt
-                    inventore in est ut optio sequi unde.</p>
+                <p>A Igreja Batista Nova Vida foi fundada em 12 de setembro de 1992. É uma Igreja de origem batista e de
+                    confissão pentecostal. Desde seu inicio foi pastoreada pelo Pr. Isac de Souza e tem sua sede em São
+                    Paulo capital.</p>
+                <p>Atualmente a Igreja conta além da sede com mais 12 Igrejas filhas e está sendo abençoada pelo Senhor
+                    com crescimento. A Igreja Batista Nova Vida tem desenvolvido intenso ministério de evangelismo
+                    através de cruzadas evangelísticas de massa e de programa diário de rádio.</p>
+                <p>Em 2016, além de dar extensão aos ministérios de alcance evangelístico, a Igreja Batista Nova Vida
+                    está focalizada na construção de sua sede própria. Um templo com capacidade para 1.200 lugares que
+                    será a base de todas as ações da Igreja.</p>
             </div>
-            <div class="col-lg-3">
-                <h3>Where</h3>
-                <p>Downtown Conference Center, New York</p>
+            <div class="col-lg-6">
+                <h3>Campanha do templo</h3>
+                <p>Se você deseja participar da Campanha da Construção do Templo entre no link CAMPANHA DO TEMPLO e
+                    junte-se a nós nesta bonita obra que resultará em muitas vidas para Cristo, o Senhor!</p>
             </div>
-            <div class="col-lg-3">
-                <h3>When</h3>
-                <p>Monday to Wednesday<br>10-12 December</p>
-            </div>
+{{--            <div class="col-lg-3">--}}
+{{--                <h3>When</h3>--}}
+{{--                <p>Monday to Wednesday<br>10-12 December</p>--}}
+{{--            </div>--}}
         </div>
     </div>
 </section>
