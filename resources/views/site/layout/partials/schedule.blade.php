@@ -25,9 +25,9 @@
                     <div class="col-md-2"><time>19:30</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/venue-gallery/6.jpg" alt="Willow Trantow">
+                            <img src="img/venue-gallery/bible.jpg" alt="Bible">
                         </div>
-                        <h4>Reunião de ensino bíblico <br></h4>
+                        <h4>Culto de ensino<br></h4>
                         <p>Reunião voltada para o ensino das doutrinas bíblicas.</p>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <div class="col-md-2"><time>19:30</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/venue-gallery/3.jpg" alt="Cole Emmerich">
+                            <img src="img/venue-gallery/mic.jpg" alt="Mic">
                         </div>
                         <h4>IBANOV Entrevista<br></h4>
                         <p>Transmissão no formato de entrevista sobre assuntos do cotidiano cristão.</p>
@@ -53,7 +53,7 @@
                     <div class="col-md-2"><time>10:00</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/venue-gallery/2.jpg" alt="Hubert Hirthe">
+                            <img src="img/venue-gallery/etm.jpeg" alt="ETM">
                         </div>
                         <h4>ETM (Escola de Treinamento para Missões)<br></h4>
                         <p>Escola dominical para estudarmos a palavra de Deus.</p>
@@ -63,7 +63,7 @@
                     <div class="col-md-2"><time>18:30</time></div>
                     <div class="col-md-10">
                         <div class="speaker">
-                            <img src="img/venue-gallery/4.jpg" alt="Jack Christiansen">
+                            <img src="img/venue-gallery/worship.jpg" alt="Worship">
                         </div>
                         <h4>Culto da família <br></h4>
                         <p>Reunião com a família onde iremos celebrar e adorar a Deus.</p>
