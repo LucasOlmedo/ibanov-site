@@ -31,9 +31,13 @@
             </div>
         </div>
         <div class="form">
-            <div id="sendmessage">Sua mensagem foi enviada. Obrigado!</div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
+            <div id="loading-message" class="d-flex justify-content-center" style="display: none !important;">
+                <div class="spinner-border" role="status">
+                    <i class="fa fa-spinner fa-4x fa-pulse"></i>
+                </div>
+            </div>
+            <form action="{{ route('site.contact-form') }}" method="post" role="form" class="contactForm">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <input aria-label="Nome" type="text" name="name" class="form-control" id="name"
@@ -54,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <textarea aria-label="Mensagem" class="form-control" name="message" rows="5" data-rule="required"
-                              data-msg="Escreva algo para nós" placeholder="Mensagem"></textarea>
+                              data-msg="Escreva uma mensagem" placeholder="Mensagem"></textarea>
                     <div class="validation"></div>
                 </div>
                 <div class="text-center">

@@ -12,13 +12,10 @@
                 <div class="speaker">
                     <img src="img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
                     <div class="details">
-                        <h3><a href="#">Bispo Isac de Souza</a></h3>
+                        <h3>Bispo Isac de Souza</h3>
                         <br>
                         <div class="social">
-                            <a href=""><i class="fa fa-twitter"></i></a>
-                            <a href=""><i class="fa fa-facebook"></i></a>
-                            <a href=""><i class="fa fa-google-plus"></i></a>
-                            <a href=""><i class="fa fa-linkedin"></i></a>
+                            <a href=""><i class="fa fa-file-text"></i> Biografia</a>
                         </div>
                     </div>
                 </div>
@@ -27,13 +24,10 @@
                 <div class="speaker">
                     <img src="img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
                     <div class="details">
-                        <h3><a href="#">Pastor Jaime Nascimento</a></h3>
+                        <h3>Pastor Jaime Nascimento</h3>
                         <br>
                         <div class="social">
-                            <a href=""><i class="fa fa-twitter"></i></a>
-                            <a href=""><i class="fa fa-facebook"></i></a>
-                            <a href=""><i class="fa fa-google-plus"></i></a>
-                            <a href=""><i class="fa fa-linkedin"></i></a>
+                            <a href=""><i class="fa fa-file-text"></i> Biografia</a>
                         </div>
                     </div>
                 </div>

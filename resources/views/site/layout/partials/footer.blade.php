@@ -8,10 +8,10 @@
                 <div class="col-lg-6 col-md-6 footer-links">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><i class="fa fa-angle-right"></i> <a href="#intro">Principal</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#about">Sobre nós</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#schedule">Reuniões</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#contact">Contato</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#intro" class="scrollto">Principal</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#about" class="scrollto">Sobre nós</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#schedule" class="scrollto">Reuniões</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#contact" class="scrollto">Contato</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 footer-contact">
@@ -38,7 +38,7 @@
     </div>
     <div class="container">
         <div class="copyright">
-            {{--            &copy; Copyright <strong>TheEvent</strong>. All Rights Reserved--}}
+            {{-- &copy; Copyright <strong>TheEvent</strong>. All Rights Reserved --}}
         </div>
         <div class="credits">
             <!--
@@ -50,7 +50,7 @@
             IBANOV - {{ date('Y') }}
             <br>
             <br>
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            {{-- Theme by <a href="https://bootstrapmade.com/">BootstrapMade</a> --}}
         </div>
     </div>
 </footer><!-- #footer -->

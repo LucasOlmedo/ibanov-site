@@ -1347,8 +1347,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form #sendmessage {
-    color: #ff002e;
-    border: 1px solid #ff002e;
+    color: #00d290;
+    border: 1px solid #00d290;
     display: none;
     text-align: center;
     padding: 15px;
@@ -1584,6 +1584,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 @media (min-width: 1024px) {
     #intro {
         background-attachment: fixed;
+        background-position: center;
     }
 
     #about {

@@ -13,6 +13,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Site principal route
 Route::get('/', function () {
     return view('site.index');
 })->name('site.index');
+
+Route::post('/contact-form', 'Site\ContactFormController@sendMessage')
+    ->name('site.contact-form');

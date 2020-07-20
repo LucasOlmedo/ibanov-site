@@ -57,12 +57,13 @@
 <script src="/lib/wow/wow.min.js"></script>
 <script src="/lib/venobox/venobox.min.js"></script>
 <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-
-<!-- Contact Form JavaScript File -->
-<script src="/js/contactform.js"></script>
+<script src="/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Template Main Javascript File -->
 <script src="/js/main.js"></script>
+
+<!-- Contact Form JavaScript File -->
+<script src="/js/contactform.js"></script>
 
 <!-- Custom JS Files -->
 @stack('page-js')
