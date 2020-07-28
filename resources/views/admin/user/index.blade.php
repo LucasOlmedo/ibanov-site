@@ -13,53 +13,38 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <div class="table-data__tool">
-                <div class="table-data__tool-left"></div>
-                <div class="table-data__tool-right">
-                    <button class="au-btn au-btn-icon au-btn--blue au-btn--small">
-                        <i class="zmdi zmdi-plus"></i> Novo usuário
+            <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal"
+                    data-target="#modal-manager-user">
+                <i class="zmdi zmdi-plus"></i> Novo usuário
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-user"></table>
+        </div>
+    </div>
+@endsection
+@section('modal')
+    <div class="modal fade" id="modal-manager-user" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Novo usuário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
-            <div class="table-responsive table-responsive-data2">
-                <table class="table table-data2 table-user">
-                    {{--                    <thead>--}}
-                    {{--                    <tr>--}}
-                    {{--                        <th>name</th>--}}
-                    {{--                        <th>email</th>--}}
-                    {{--                        <th>description</th>--}}
-                    {{--                        <th>date</th>--}}
-                    {{--                        <th>status</th>--}}
-                    {{--                        <th>price</th>--}}
-                    {{--                        <th>Opções</th>--}}
-                    {{--                    </tr>--}}
-                    {{--                    </thead>--}}
-                    {{--                    <tbody>--}}
-                    {{--                    @foreach([1,2,3,4,5] as$fake)--}}
-                    {{--                        <tr class="tr-shadow">--}}
-                    {{--                            <td>Lori Lynch</td>--}}
-                    {{--                            <td>lori@example.com</td>--}}
-                    {{--                            <td class="desc">Samsung S8 Black</td>--}}
-                    {{--                            <td>2018-09-27 02:12</td>--}}
-                    {{--                            <td>--}}
-                    {{--                                <span class="status--process">Processed</span>--}}
-                    {{--                            </td>--}}
-                    {{--                            <td>$679.00</td>--}}
-                    {{--                            <td>--}}
-                    {{--                                <div class="table-data-feature">--}}
-                    {{--                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Alterar">--}}
-                    {{--                                        <i class="zmdi zmdi-edit text-warning"></i>--}}
-                    {{--                                    </button>--}}
-                    {{--                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Remover">--}}
-                    {{--                                        <i class="zmdi zmdi-delete text-danger"></i>--}}
-                    {{--                                    </button>--}}
-                    {{--                                </div>--}}
-                    {{--                            </td>--}}
-                    {{--                        </tr>--}}
-                    {{--                        <tr class="spacer"></tr>--}}
-                    {{--                    @endforeach--}}
-                    {{--                    </tbody>--}}
-                </table>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi aperiam, commodi, cupiditate
+                    dolorum earum error esse, fugit hic modi omnis perspiciatis porro quae similique sint vel veritatis
+                    voluptatum. Eum!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
             </div>
         </div>
     </div>

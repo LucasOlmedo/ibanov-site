@@ -25,15 +25,35 @@
         /**
             CUSTOM CSS
          */
+        .row {
+            margin-bottom: 20px;
+        }
 
         .breadcrumb {
             font-size: .8em;
             padding-top: 0;
+            padding-left: 0;
             background-color: transparent;
         }
 
         .breadcrumb-item.active {
             color: #4272d7;
+        }
+
+        .table-data-feature {
+            justify-content: flex-start;
+        }
+
+        .table-earning tbody tr:hover td {
+            cursor: initial !important;
+        }
+
+        .table-earning thead th {
+            padding: 20px 35px;
+        }
+
+        .font-15 {
+            font-size: 15px;
         }
     </style>
 @endpush

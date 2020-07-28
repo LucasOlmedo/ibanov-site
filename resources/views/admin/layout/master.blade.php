@@ -35,6 +35,7 @@
             </div>
         </div>
         <!-- END MAIN CONTENT-->
+        @yield('modal')
     </div>
     <!-- END PAGE CONTAINER-->
 </div>

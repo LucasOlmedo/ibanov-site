@@ -38,6 +38,9 @@ class User extends Authenticatable
         'password',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $visible = [
         'userID',
         'nome',
@@ -58,4 +61,11 @@ class User extends Authenticatable
      * Custom updated_at
      */
     const UPDATED_AT = 'DateUpd';
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'sysAdmin' => 'boolean',
+    ];
 }

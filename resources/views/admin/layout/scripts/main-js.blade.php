@@ -21,12 +21,15 @@
 
 <!-- Main JS-->
 <script src="{{ asset('js/main_admin.js') }}"></script>
-<script src="{{ asset('js/custom-widgets.js') }}"></script>
 
 @push('page-js')
     <script>
         /**
          * Custom JS
          */
+
+        $(document).on('change', function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
 @endpush
