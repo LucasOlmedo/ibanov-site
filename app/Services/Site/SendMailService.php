@@ -19,7 +19,7 @@ class SendMailService
     public function send(array $mailArgs = [])
     {
         try {
-            Mail::to('lcsolmedosilva@gmail.com')
+            Mail::to(env('MAIL_FROM_ADDRESS'))
                 ->send(new ContactMail(...array_values($mailArgs)));
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
