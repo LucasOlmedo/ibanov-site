@@ -45,7 +45,7 @@ class ContactMail extends Mailable
     public function __construct(string $name, string $mailFrom, string $subject, string $messageMail)
     {
         $this->name = $name;
-        $this->mailFrom = $mailFrom;
+        $this->mailFrom = env('MAIL_USERNAME', $mailFrom);
         $this->subject = $subject;
         $this->messageMail = $messageMail;
     }

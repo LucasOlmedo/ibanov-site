@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Site principal route
@@ -20,3 +21,5 @@ Route::get('/', function () {
 
 Route::post('/contact-form', 'Site\ContactFormController@sendMessage')
     ->name('site.contact-form');
+
+Auth::routes();

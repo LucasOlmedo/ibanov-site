@@ -15,7 +15,7 @@
                 <li><a href="#venue">Localização</a></li>
                 <li><a href="#gallery">Galeria de fotos</a></li>
                 <li><a href="#contact">Contato</a></li>
-                <li class="buy-tickets"><a href="#"><i class="fa fa-lock"></i></a></li>
+                <li class="buy-tickets"><a href="{{ route('login') }}"><i class="fa fa-lock"></i></a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>

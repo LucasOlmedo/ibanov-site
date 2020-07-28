@@ -32,7 +32,18 @@ class User extends Authenticatable
         'ddd',
         'telefone',
         'email',
+        'endereco',
+        'avatar',
+        'sysAdmin',
         'password',
+    ];
+
+    protected $visible = [
+        'userID',
+        'nome',
+        'ddd',
+        'telefone',
+        'email',
         'endereco',
         'avatar',
         'sysAdmin',
