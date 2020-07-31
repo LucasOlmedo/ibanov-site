@@ -1,37 +1,75 @@
 @include('plugins.custom-loadTable')
 @push('page-js')
     <script>
-        let _tableUser;
+        let _tableUser, _currentUser = JSON.parse(`@json(auth()->user())`);
 
         $(document).ready(function () {
-            let $form = $('#form-manager-user'), $loadForm = $('.container-loader-form'),
-                $modalStore = $('#modal-manager-user');
+            let $formStore = $('#form-manager-user'), $formEdit = $('#form-edit-user');
 
             _tableUser = loadTableUser();
             applyPhoneMask();
-            $form.on('submit', function (e) {
+            $formStore.on('submit', function (e) {
+                let $loadForm = $('#loader-store');
                 e.preventDefault();
                 $.ajax({
                     url: `{{ route('admin.user.store') }}`,
-                    data: $form.serialize(),
+                    data: $formStore.serialize(),
                     type: 'post',
                     beforeSend: () => {
-                        $form.find('input').prop('readonly', true);
-                        $form.find('button').prop('disabled', true);
+                        $formStore.find('input').prop('readonly', true);
+                        $formStore.find('button').prop('disabled', true);
                         $loadForm.css('display', 'flex');
                     },
                     success: response => {
-                        $form.find('input').prop('readonly', false);
-                        $form.find('button').prop('disabled', false);
+                        $formStore.find('input').prop('readonly', false);
+                        $formStore.find('button').prop('disabled', false);
                         $loadForm.css('display', 'none');
-                        $form.trigger('reset');
-                        $modalStore.modal('hide');
+                        $formStore.trigger('reset');
+                        $('#modal-manager-user').modal('hide');
                         __toast.fire({icon: 'success', html: response.message});
                         _tableUser.loadTable('reload');
                     },
                     error: err => {
-                        $form.find('input').prop('readonly', false);
-                        $form.find('button').prop('disabled', false);
+                        $formStore.find('input').prop('readonly', false);
+                        $formStore.find('button').prop('disabled', false);
+                        $loadForm.css('display', 'none');
+                        let errors = err.responseJSON.errors, message = ' ';
+                        if (errors) {
+                            for (let er in errors) {
+                                message = errors[er].join('<br>');
+                            }
+                        } else {
+                            message = err.responseJSON.message;
+                        }
+                        __toast.fire({icon: 'error', title: ' ', html: message});
+                    },
+                });
+            });
+
+            $formEdit.on('submit', function (e) {
+                e.preventDefault();
+                let id = $formEdit.find('input[name="userID"]').val(), $loadForm = $('#loader-edit');
+                $.ajax({
+                    url: `/admin/user/update/${id}`,
+                    data: $formEdit.serialize(),
+                    type: 'PUT',
+                    beforeSend: () => {
+                        $formEdit.find('input').prop('readonly', true);
+                        $formEdit.find('button').prop('disabled', true);
+                        $loadForm.css('display', 'flex');
+                    },
+                    success: response => {
+                        $formEdit.find('input').prop('readonly', false);
+                        $formEdit.find('button').prop('disabled', false);
+                        $loadForm.css('display', 'none');
+                        $formEdit.trigger('reset');
+                        $('#modal-edit-user').modal('hide');
+                        __toast.fire({icon: 'success', html: response.message});
+                        _tableUser.loadTable('reload');
+                    },
+                    error: err => {
+                        $formEdit.find('input').prop('readonly', false);
+                        $formEdit.find('button').prop('disabled', false);
                         $loadForm.css('display', 'none');
                         let errors = err.responseJSON.errors, message = ' ';
                         if (errors) {
@@ -60,22 +98,23 @@
                                 : '<span class="badge badge-secondary">Comum</span>';
                         },
                     },
-                    {data: ['ddd', 'telefone'], title: 'Telefone'},
-                        @if(auth()->user()->isAdmin())
                     {
                         data: ['userID'], title: 'Opções', render: (title, data, item) => {
-                            let userID = data.shift();
-                            return '<div class="table-data-feature">' +
-                                '<button onclick="updateUser(' + userID + ')" class="item" data-toggle="tooltip" data-placement="top" title="Alterar">' +
-                                '<i class="zmdi zmdi-edit text-warning"></i>' +
-                                '</button>' +
-                                '<button onclick="deleteUser(' + userID + ')" class="item" data-toggle="tooltip" data-placement="top" title="Remover">' +
-                                '<i class="zmdi zmdi-delete text-danger"></i>' +
-                                '</button>' +
-                                '</div>';
+                            if (_currentUser.sysAdmin) {
+                                let userID = data.shift();
+                                if (_currentUser.userID == userID) return '';
+                                return '<div class="table-data-feature">' +
+                                    '<button onclick="updateUser(' + userID + ')" class="item" data-toggle="tooltip" data-placement="top" title="Alterar">' +
+                                    '<i class="zmdi zmdi-edit text-warning"></i>' +
+                                    '</button>' +
+                                    '<button onclick="deleteUser(' + userID + ')" class="item" data-toggle="tooltip" data-placement="top" title="Remover">' +
+                                    '<i class="zmdi zmdi-delete text-danger"></i>' +
+                                    '</button>' +
+                                    '</div>';
+                            }
+                            return '';
                         },
                     },
-                    @endif
                 ],
                 afterInit: () => {
                     $('[data-toggle="tooltip"]').tooltip();
@@ -94,10 +133,50 @@
                 };
 
             $('#user-phone').mask(SPMaskBehavior, spOptions);
+            $('#edit-phone').mask(SPMaskBehavior, spOptions);
         }
 
         function updateUser(id) {
-            console.log(id);
+            let $form = $('#form-edit-user'), $loadForm = $('#loader-edit');
+            $('#modal-edit-user').modal('show');
+            $.ajax({
+                url: `/admin/user/get/${id}`,
+                type: 'get',
+                beforeSend: () => {
+                    $form.find('input').prop('readonly', true);
+                    $form.find('button').prop('disabled', true);
+                    $loadForm.css('display', 'flex');
+                    $form.trigger('reset');
+                },
+                success: response => {
+                    $form.find('input').prop('readonly', false);
+                    $form.find('button').prop('disabled', false);
+                    if (response != null) {
+                        for (let k in response) {
+                            if (k == 'sysAdmin') {
+                                $form.find('#edit-admin').prop('checked', response[k]);
+                            } else {
+                                $form.find(`[name="${k}"]`).val(response[k]);
+                            }
+                        }
+                    }
+                    $loadForm.css('display', 'none');
+                },
+                error: err => {
+                    $form.find('input').prop('readonly', false);
+                    $form.find('button').prop('disabled', false);
+                    $loadForm.css('display', 'none');
+                    let errors = err.responseJSON.errors, message = ' ';
+                    if (errors) {
+                        for (let er in errors) {
+                            message = errors[er].join('<br>');
+                        }
+                    } else {
+                        message = err.responseJSON.message;
+                    }
+                    __toast.fire({icon: 'error', title: ' ', html: message});
+                },
+            });
         }
 
         function deleteUser(id) {

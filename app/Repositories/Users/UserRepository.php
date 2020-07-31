@@ -53,6 +53,17 @@ class UserRepository
     }
 
     /**
+     * @param  User  $user
+     * @param  array  $params
+     * @return bool
+     */
+    public function updateUser(User $user, array $params = [])
+    {
+        $params['sysAdmin'] = (bool)Arr::get($params, 'sysAdmin');
+        return $user->update($params);
+    }
+
+    /**
      * @param  int  $id
      * @return mixed
      */

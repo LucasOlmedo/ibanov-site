@@ -35,7 +35,7 @@
             </div>
         </div>
         <!-- END MAIN CONTENT-->
-        @yield('modal')
+        @stack('modal')
     </div>
     <!-- END PAGE CONTAINER-->
 </div>

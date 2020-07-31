@@ -2,6 +2,8 @@
 @include('admin.user.scripts.css')
 @include('admin.user.scripts.js')
 @include('admin.user.partials.modal-user')
+@include('admin.user.partials.modal-edit-user')
+
 @section('page-title', 'Gestão de usuários')
 @section('breadcrumb')
     <li class="breadcrumb-item">
