@@ -28,9 +28,11 @@
                         @endif
                     </div>
                     <div class="login-checkbox">
-                        <label>
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>Lembrar-me
-                        </label>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" name="remember"
+                                   id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label class="custom-control-label" for="remember">Lembrar-me</label>
+                        </div>
                         <label>
                             <a href="{{ route('password.request') }}">Esqueceu sua senha?</a>
                         </label>

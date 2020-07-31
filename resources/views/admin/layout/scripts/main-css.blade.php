@@ -55,5 +55,68 @@
         .font-15 {
             font-size: 15px;
         }
+
+
+        /* LOADER  FORM */
+
+        .container-loader-form {
+            background-color: #00000029;
+            width: 100%;
+            min-height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            /* position the div in center */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .loader-form {
+            top: 40px;
+            left: -2.5px;
+        }
+
+        .loader-form span {
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background-color: #0dc7ff;
+        }
+
+        .loader-form span:nth-child(1) {
+            animation: grow 1s ease-in-out infinite;
+        }
+
+        .loader-form span:nth-child(2) {
+            animation: grow 1s ease-in-out 0.15s infinite;
+        }
+
+        .loader-form span:nth-child(3) {
+            animation: grow 1s ease-in-out 0.30s infinite;
+        }
+
+        .loader-form span:nth-child(4) {
+            animation: grow 1s ease-in-out 0.45s infinite;
+        }
+
+        @keyframes grow {
+            0%, 100% {
+                -webkit-transform: scaleY(1);
+                -ms-transform: scaleY(1);
+                -o-transform: scaleY(1);
+                transform: scaleY(1);
+            }
+
+            50% {
+                -webkit-transform: scaleY(1.8);
+                -ms-transform: scaleY(1.8);
+                -o-transform: scaleY(1.8);
+                transform: scaleY(1.8);
+            }
+        }
     </style>
 @endpush
