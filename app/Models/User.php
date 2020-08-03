@@ -73,9 +73,18 @@ class User extends Authenticatable
     ];
 
     /**
+     * @var string[]
+     */
+    protected $dates = [
+        'DateIns',
+        'DateUpd',
+        'deleted_at',
+    ];
+
+    /**
      * @var string
      */
-    protected $dateFormat = 'Y-m-d H:i:s';
+//    protected $dateFormat = 'Y-m-d H:i:s.u';
 
     /**
      * @return mixed|bool
