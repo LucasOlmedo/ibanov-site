@@ -56,7 +56,6 @@
             font-size: 15px;
         }
 
-
         /* LOADER  FORM */
 
         .container-loader-form {
@@ -117,6 +116,11 @@
                 -o-transform: scaleY(1.8);
                 transform: scaleY(1.8);
             }
+        }
+
+        .required > span {
+            color: red;
+            vertical-align: sub;
         }
     </style>
 @endpush

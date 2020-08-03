@@ -22,12 +22,12 @@
                         @csrf
                         <input type="hidden" name="userID">
                         <div class="form-group">
-                            <label for="edit-name" class="control-label mb-1">Nome</label>
+                            <label for="edit-name" class="control-label required mb-1">Nome <span>*</span></label>
                             <input id="edit-name" name="nome" type="text" class="form-control" required
                                    placeholder="Ex: John Doe">
                         </div>
                         <div class="form-group">
-                            <label for="edit-email" class="control-label mb-1">Email</label>
+                            <label for="edit-email" class="control-label required mb-1">Email <span>*</span></label>
                             <input id="edit-email" name="email" type="email" class="form-control" required
                                    placeholder="Ex: john@example.com" disabled>
                         </div>

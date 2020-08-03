@@ -21,12 +21,12 @@
                     <form id="form-manager-user" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="user-name" class="control-label mb-1">Nome</label>
+                            <label for="user-name" class="control-label required mb-1">Nome <span>*</span></label>
                             <input id="user-name" name="nome" type="text" class="form-control" required
                                    placeholder="Ex: John Doe">
                         </div>
                         <div class="form-group">
-                            <label for="user-email" class="control-label mb-1">Email</label>
+                            <label for="user-email" class="control-label required mb-1">Email <span>*</span></label>
                             <input id="user-email" name="email" type="email" class="form-control" required
                                    placeholder="Ex: john@example.com">
                         </div>

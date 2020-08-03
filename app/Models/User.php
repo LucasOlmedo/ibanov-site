@@ -73,6 +73,11 @@ class User extends Authenticatable
     ];
 
     /**
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:s';
+
+    /**
      * @return mixed|bool
      */
     public function isAdmin()
