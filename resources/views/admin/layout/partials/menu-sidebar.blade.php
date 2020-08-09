@@ -13,6 +13,11 @@
                         <i class="fas fa-chart-bar"></i> Dashboard
                     </a>
                 </li>
+                <li class="{{ request()->route()->named('admin.post.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.post.index') }}">
+                        <i class="fa fa-file-text"></i> Depoimentos
+                    </a>
+                </li>
                 <li class="{{ request()->route()->named('admin.user.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.user.index') }}">
                         <i class="fas fa-users"></i> Usuários

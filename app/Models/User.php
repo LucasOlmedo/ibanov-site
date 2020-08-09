@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 /**
  * Class User
- * @property mixed sysAdmin
+ * @property bool sysAdmin
+ * @property int userID
  * @package App\Models
  * @method static create(array $userData)
  * @method static findOrFail(int $id)

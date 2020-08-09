@@ -28,9 +28,14 @@
         /**
          * Custom JS
          */
+        const __authUser = JSON.parse(`@json(auth()->user())`);
 
         $(document).on('change', function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+        function uniqId() {
+            return Math.random().toString(10).substr(2, 9);
+        }
     </script>
 @endpush

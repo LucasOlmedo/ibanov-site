@@ -1,7 +1,7 @@
 @include('plugins.custom-loadTable')
 @push('page-js')
     <script>
-        let _tableUser, _currentUser = JSON.parse(`@json(auth()->user())`);
+        let _tableUser;
 
         $(document).ready(function () {
             let $formStore = $('#form-manager-user'), $formEdit = $('#form-edit-user');
@@ -100,9 +100,9 @@
                     },
                     {
                         data: ['userID'], title: 'Opções', render: (title, data, item) => {
-                            if (_currentUser.sysAdmin) {
+                            if (__authUser.sysAdmin) {
                                 let userID = data.shift();
-                                if (_currentUser.userID == userID) return '';
+                                if (__authUser.userID == userID) return '';
                                 return '<div class="table-data-feature">' +
                                     '<button onclick="updateUser(' + userID + ')" class="item" data-toggle="tooltip" data-placement="top" title="Alterar">' +
                                     '<i class="zmdi zmdi-edit text-warning"></i>' +

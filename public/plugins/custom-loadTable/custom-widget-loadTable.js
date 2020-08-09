@@ -1,6 +1,7 @@
 $(function () {
     $.widget('custom.loadTable', {
         options: {
+            _uniq: null,
             url: '',
             filter: {},
             method: 'get',
@@ -10,11 +11,14 @@ $(function () {
         },
 
         _create: function () {
+            this.options._uniq = uniqId();
+            this.element.parent().prepend(this._makeButtons());
             this._getData();
+            this._handleButtonEvents();
         },
 
         reload: function () {
-            return this._create();
+            return this._getData();
         },
 
         _getData: function () {
@@ -23,8 +27,14 @@ $(function () {
                 url: this.options.url,
                 type: this.options.method,
                 data: this.options.filter,
-                beforeSend: () => _table.prepend(_loader),
-                complete: () => _loader.remove(),
+                beforeSend: () => {
+                    $(`#table-data__tool_${this.options._uniq}`).find('button').prop('disabled', true);
+                    _table.prepend(_loader);
+                },
+                complete: () => {
+                    $(`#table-data__tool_${this.options._uniq}`).find('button').prop('disabled', false);
+                    _loader.remove();
+                },
                 success: response => {
                     this._renderTable(response);
                 },
@@ -39,6 +49,18 @@ $(function () {
                 '<circle cx="170" cy="170" r="85" stroke="#21e3f7"/>' +
                 '</svg>' +
                 '</div>';
+        },
+
+        _makeButtons: function () {
+            let dataTool = $(`<div id="table-data__tool_${this.options._uniq}" 
+                             class="table-data__tool cst-loadTable">
+                                <div class="table-data__tool-left"></div>
+                                <div class="table-data__tool-right"></div>
+                            </div>`);
+            dataTool.find('.table-data__tool-left')
+                .append(`<button id="data__tool_btn_refresh_${this.options._uniq}" class="btn btn-dark btn-sm">
+                <i class="fas fa-refresh"></i></button>`);
+            return dataTool;
         },
 
         _renderTable: function (data) {
@@ -61,6 +83,10 @@ $(function () {
 
         _makeBody: function (rowsData) {
             let row = '';
+            if (rowsData.length == 0) {
+                return `<tr><td class="text-center" colspan="${this.options.columns.length}">
+                    <i>Nenhum registro encontrado.</i></td></tr>`;
+            }
             for (let item of rowsData) {
                 row += '<tr>';
                 for (let col of this.options.columns) {
@@ -78,6 +104,14 @@ $(function () {
                 row += '</tr>';
             }
             return row;
+        },
+
+        _handleButtonEvents: function () {
+            let _self = this;
+            document.getElementById(`data__tool_btn_refresh_${this.options._uniq}`)
+                .addEventListener('click', function(){
+                    _self.reload();
+            });
         },
     });
 });
