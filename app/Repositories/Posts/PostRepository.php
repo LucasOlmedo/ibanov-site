@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
+use function Couchbase\zlibCompress;
 
 /**
  * Class PostRepository
@@ -40,5 +42,20 @@ class PostRepository
             $query->where('userID', '=', $authUser->userID);
         }
         return $query->get();
+    }
+
+    /**
+     * @param  array  $params
+     * @return mixed
+     */
+    public function storePost(array $params)
+    {
+        $fileUpload = Arr::get($params, 'fileupload');
+        if (empty($fileUpload)) {
+            return false;
+        }
+        $params['userID'] = auth()->user()->userID;
+        $params['imagem'] = base64_encode(file_get_contents($fileUpload));
+        return $this->model::create($params);
     }
 }

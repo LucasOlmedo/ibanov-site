@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Post
  * @package App\Models
+ * @method static create(array $params)
  */
 class Post extends Model
 {

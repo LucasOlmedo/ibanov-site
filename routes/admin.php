@@ -16,10 +16,12 @@ Route::group(['prefix' => 'user'], function () {
     Route::delete('delete/{id}', 'UserController@delete')->name('user.delete');
 });
 
-Route::group(['prefix' => 'posts'], function () {
+Route::group(['prefix' => 'post'], function () {
     Route::get('', 'PostController@index')->name('post.index');
+    Route::get('create', 'PostController@create')->name('post.create');
     Route::post('store', 'PostController@store')->name('post.store');
     Route::get('get/{id}', 'PostController@show')->name('post.show');
+    Route::get('edit/{id}', 'PostController@edit')->name('post.edit');
     Route::match(['put', 'patch'], 'update/{id}', 'PostController@update')->name('post.update');
     Route::delete('delete/{id}', 'PostController@delete')->name('post.delete');
 });

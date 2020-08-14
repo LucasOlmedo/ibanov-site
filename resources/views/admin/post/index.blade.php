@@ -14,9 +14,9 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-primary">
+            <a href="{{ route('admin.post.create') }}" class="btn btn-primary">
                 <i class="zmdi zmdi-plus"></i> Novo depoimento
-            </button>
+            </a>
         </div>
     </div>
     <div class="row">

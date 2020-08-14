@@ -26,7 +26,7 @@
                         $loadForm.css('display', 'none');
                         $formStore.trigger('reset');
                         $('#modal-manager-user').modal('hide');
-                        __toast.fire({icon: 'success', html: response.message});
+                        __toast.fire({icon: 'success', html: `&nbsp;&nbsp;${response.message}`});
                         _tableUser.loadTable('reload');
                     },
                     error: err => {
@@ -41,7 +41,7 @@
                         } else {
                             message = err.responseJSON.message;
                         }
-                        __toast.fire({icon: 'error', title: ' ', html: message});
+                        __toast.fire({icon: 'error', title: ' ', html: `&nbsp;&nbsp;${message}`});
                     },
                 });
             });
@@ -64,7 +64,7 @@
                         $loadForm.css('display', 'none');
                         $formEdit.trigger('reset');
                         $('#modal-edit-user').modal('hide');
-                        __toast.fire({icon: 'success', html: response.message});
+                        __toast.fire({icon: 'success', html: `&nbsp;&nbsp;${response.message}`});
                         _tableUser.loadTable('reload');
                     },
                     error: err => {
@@ -79,7 +79,7 @@
                         } else {
                             message = err.responseJSON.message;
                         }
-                        __toast.fire({icon: 'error', title: ' ', html: message});
+                        __toast.fire({icon: 'error', title: ' ', html: `&nbsp;&nbsp;${message}`});
                     },
                 });
             });
@@ -174,7 +174,7 @@
                     } else {
                         message = err.responseJSON.message;
                     }
-                    __toast.fire({icon: 'error', title: ' ', html: message});
+                    __toast.fire({icon: 'error', title: ' ', html: `&nbsp;&nbsp;${message}`});
                 },
             });
         }
@@ -206,7 +206,10 @@
                 allowOutsideClick: () => !Swal.isLoading(),
             }).then((result) => {
                 if (result.value) {
-                    __toast.fire({icon: 'success', title: result.value.message || 'Removido!'});
+                    __toast.fire({
+                        icon: 'success',
+                        title: `&nbsp;&nbsp;${result.value.message}` || `&nbsp;&nbsp;Removido!`
+                    });
                     _tableUser.loadTable('reload');
                 }
             })

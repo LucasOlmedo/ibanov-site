@@ -9,18 +9,15 @@ $(function () {
             afterInit: () => {
             },
         },
-
         _create: function () {
             this.options._uniq = uniqId();
             this.element.parent().prepend(this._makeButtons());
             this._getData();
             this._handleButtonEvents();
         },
-
         reload: function () {
             return this._getData();
         },
-
         _getData: function () {
             let _loader = $(this._makeLoader()), _table = this.element.html('');
             $.ajax({
@@ -40,7 +37,6 @@ $(function () {
                 },
             });
         },
-
         _makeLoader: function () {
             return '<div class="custom-preloader-widget">' +
                 '<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">' +
@@ -50,7 +46,6 @@ $(function () {
                 '</svg>' +
                 '</div>';
         },
-
         _makeButtons: function () {
             let dataTool = $(`<div id="table-data__tool_${this.options._uniq}" 
                              class="table-data__tool cst-loadTable">
@@ -62,7 +57,6 @@ $(function () {
                 <i class="fas fa-refresh"></i></button>`);
             return dataTool;
         },
-
         _renderTable: function (data) {
             let _table = this.element;
             _table.addClass(' table-earning table-borderless table-striped font-15 ');
@@ -71,7 +65,6 @@ $(function () {
             _table.find('tbody').html(this._makeBody(data));
             this.options.afterInit();
         },
-
         _makeHeader: function () {
             let row = '<tr>';
             for (let col of this.options.columns) {
@@ -80,7 +73,6 @@ $(function () {
             row += '</tr>';
             return row;
         },
-
         _makeBody: function (rowsData) {
             let row = '';
             if (rowsData.length == 0) {
@@ -105,7 +97,6 @@ $(function () {
             }
             return row;
         },
-
         _handleButtonEvents: function () {
             let _self = this;
             document.getElementById(`data__tool_btn_refresh_${this.options._uniq}`)

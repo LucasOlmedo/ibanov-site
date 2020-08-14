@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -36,6 +36,31 @@
         </div>
         <!-- END MAIN CONTENT-->
         @stack('modal')
+        @push('page-js')
+            @if(session()->has('success'))
+                <script>
+                    $(function () {
+                        __toast.fire({
+                            icon: 'success',
+                            title: ' ',
+                            html: `&nbsp;&nbsp;{{ session()->get('success') }}`
+                        });
+                    });
+                </script>
+            @endif
+            @if(session()->has('error'))
+                <script>
+                    $(function () {
+                        let errors = JSON.parse(`@json(session()->get('error'))`), msg = `&nbsp;`;
+                        for (let m in errors) {
+                            let item = errors[m];
+                            msg += item.join('&nbsp;<br>&nbsp;');
+                        }
+                        __toast.fire({icon: 'error', title: ' ', html: `&nbsp;${msg}`});
+                    });
+                </script>
+            @endif
+        @endpush
     </div>
     <!-- END PAGE CONTAINER-->
 </div>
