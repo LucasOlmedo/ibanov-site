@@ -30,6 +30,9 @@
         .image-title-wrap {
             padding: 0 15px 15px 15px;
             color: #222;
+            position: absolute;
+            right: 0;
+            top: 0;
         }
 
         .drag-text {
@@ -45,36 +48,44 @@
 
         .file-upload-image {
             height: 250px;
-            margin: auto;
+            margin: auto auto 5px;
+            position: relative;
+            width: fit-content;
+        }
+
+        .file-upload-image img {
+            height: 100%;
         }
     </style>
 @endpush
 @push('img-uploader-component')
-<div class="file-upload">
-    <div class="image-upload-wrap">
-        <input class="file-upload-input" type='file' onchange="readURL(this);"
-               accept="image/*" name="fileupload"/>
-        <div class="drag-text">
-            <h5>
-                Arraste um arquivo ou clique para adicionar uma imagem <br>
-                <i class="zmdi zmdi-hc-5x zmdi-cloud-upload"></i>
-            </h5>
+    <div class="file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);"
+                   accept="image/*" name="fileupload"/>
+            <div class="drag-text">
+                <h5>
+                    Arraste um arquivo ou clique para adicionar uma imagem <br>
+                    <i class="zmdi zmdi-hc-5x zmdi-cloud-upload"></i>
+                </h5>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <div class="file-upload-image">
+                <img src="#" alt="Imagem"/>
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="btn btn-danger m-t-15">
+                        <i class="zmdi zmdi-close"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="file-upload-content">
-        <img class="file-upload-image" src="#" alt="Imagem"/>
-        <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload()" class="btn btn-danger m-t-15">
-                <i class="zmdi zmdi-close"></i> &nbsp;Remover
-            </button>
-        </div>
-    </div>
-</div>
 @endpush
 @push('page-js')
     <script>
-        let $imgUpWrap = $('.image-upload-wrap'),
-            $fileUpdImg = $('.file-upload-image'),
+        let $imgUpWrap = $('.image-upload-wrap'), canLeavePage = false,
+            $fileUpdImg = $('.file-upload-image img'),
             $fileUpdCnt = $('.file-upload-content');
 
         function readURL(input) {
@@ -104,5 +115,17 @@
         }).bind('dragleave', function () {
             $(this).removeClass('image-dropping');
         });
+
+        window.onload = function () {
+            window.addEventListener('beforeunload', function (e) {
+                if (canLeavePage) {
+                    return false;
+                }
+                // Support Chrome
+                e.returnValue = 'Suas alterações não serão salvas!';
+                // Support IE
+                return 'Suas alterações não serão salvas!';
+            });
+        }
     </script>
 @endpush
