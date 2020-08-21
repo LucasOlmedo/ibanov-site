@@ -4,6 +4,7 @@ namespace App\Repositories\Posts;
 
 use App\Models\Post;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
@@ -41,7 +42,7 @@ class PostRepository
         if (!$authUser->isAdmin()) {
             $query->where('userID', '=', $authUser->userID);
         }
-        return $query->get();
+        return $query->with('user:userID,nome')->get();
     }
 
     /**

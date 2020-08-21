@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Post
+ * @property mixed DateIns
  * @package App\Models
  * @method static create(array $params)
  */
@@ -64,5 +66,14 @@ class Post extends Model
         'Texto',
         'DateIns',
         'DateUpd',
+        'user', // relation
     ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userID');
+    }
 }

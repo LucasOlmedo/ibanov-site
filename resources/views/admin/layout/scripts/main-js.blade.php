@@ -18,6 +18,9 @@
 <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('vendor/moment/moment.min.js') }}"></script>
+
+<!-- Lib JS-->
 <script src="{{ asset('lib/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 
 <!-- Main JS-->

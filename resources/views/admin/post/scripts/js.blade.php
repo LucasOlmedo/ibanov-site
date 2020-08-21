@@ -11,9 +11,18 @@
             return $('.table-post').loadTable({
                 url: `{{ route('admin.post.index') }}`,
                 columns: [
-                    {data: ['userID'], title: 'Usuário'},
+                    {
+                        data: ['userID'], title: 'Usuário', render: (title, data, item) => {
+                            return item.user.nome;
+                        }
+                    },
                     {data: ['titulo'], title: 'Título'},
-                    {data: ['DateIns'], title: 'Publicação'},
+                    {
+                        data: ['DateIns'], title: 'Publicação', render: (title, data) => {
+                            let date = data.shift();
+                            return moment(date).format('DD/MM/YYYY HH:mm:ss');
+                        }
+                    },
                     {
                         data: ['depoimentoID'], title: 'Opções', render: (title, data, item) => {
                             if (__authUser.userID != item.userID) return '';
