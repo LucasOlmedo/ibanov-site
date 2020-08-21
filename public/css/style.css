@@ -1553,6 +1553,25 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 /*--------------------------------------------------------------
+# Modal style
+--------------------------------------------------------------*/
+
+.modal-custom-site .modal-content {
+    border-radius: 0;
+    padding-bottom: 10px;
+}
+
+.modal-custom-site .modal-title {
+    font-weight: 600;
+}
+
+@media (min-width: 576px) {
+    .modal-custom-site .modal-dialog {
+        max-width: 650px;
+    }
+}
+
+/*--------------------------------------------------------------
 # Responsive Media Queries
 --------------------------------------------------------------*/
 
