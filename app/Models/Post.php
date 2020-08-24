@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed DateIns
  * @package App\Models
  * @method static create(array $params)
+ * @method static findOrFail(int $id)
  */
 class Post extends Model
 {

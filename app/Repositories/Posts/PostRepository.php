@@ -4,11 +4,10 @@ namespace App\Repositories\Posts;
 
 use App\Models\Post;
 use App\Models\User;
-use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
-use function Couchbase\zlibCompress;
 
 /**
  * Class PostRepository
@@ -42,7 +41,7 @@ class PostRepository
         if (!$authUser->isAdmin()) {
             $query->where('userID', '=', $authUser->userID);
         }
-        return $query->with('user:userID,nome')->get();
+        return $query->orderByDesc('DateIns')->with('user:userID,nome')->get();
     }
 
     /**
@@ -58,5 +57,37 @@ class PostRepository
         $params['userID'] = auth()->user()->userID;
         $params['imagem'] = base64_encode(file_get_contents($fileUpload));
         return $this->model::create($params);
+    }
+
+    public function updatePost(Post $post, array $params)
+    {
+        $fileUpload = Arr::get($params, 'fileupload');
+        if (!empty($fileUpload)) {
+            $params['imagem'] = base64_encode(file_get_contents($fileUpload));
+        }
+        return $post->update($params);
+    }
+
+    /**
+     * @param  int  $id
+     * @return mixed
+     */
+    public function getPost(int $id)
+    {
+        return $this->model::findOrFail($id);
+    }
+
+    /**
+     * @param  Post  $post
+     * @return bool|null
+     * @throws Exception
+     */
+    public function deletePost(Post $post)
+    {
+        try {
+            return $post->delete();
+        } catch (Exception $e) {
+            throw new $e;
+        }
     }
 }

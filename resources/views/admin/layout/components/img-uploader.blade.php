@@ -72,7 +72,11 @@
         </div>
         <div class="file-upload-content">
             <div class="file-upload-image">
-                <img src="#" alt="Imagem"/>
+                @isset($img)
+                    <img src="data:image/jpg;base64, {{ $img }}" alt="Imagem"/>
+                @else
+                    <img src="#" alt="Imagem"/>
+                @endisset
                 <div class="image-title-wrap">
                     <button type="button" onclick="removeUpload()" class="btn btn-danger m-t-15">
                         <i class="zmdi zmdi-close"></i>
@@ -84,7 +88,7 @@
 @endpush
 @push('page-js')
     <script>
-        let $imgUpWrap = $('.image-upload-wrap'), canLeavePage = false,
+        let $imgUpWrap = $('.image-upload-wrap'),
             $fileUpdImg = $('.file-upload-image img'),
             $fileUpdCnt = $('.file-upload-content');
 
@@ -115,17 +119,5 @@
         }).bind('dragleave', function () {
             $(this).removeClass('image-dropping');
         });
-
-        window.onload = function () {
-            window.addEventListener('beforeunload', function (e) {
-                if (canLeavePage) {
-                    return false;
-                }
-                // Support Chrome
-                e.returnValue = 'Suas alterações não serão salvas!';
-                // Support IE
-                return 'Suas alterações não serão salvas!';
-            });
-        }
     </script>
 @endpush

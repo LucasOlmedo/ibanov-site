@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Posts\PostRepository;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -53,6 +55,10 @@ class PostController extends Controller
         return view('admin.post.partials.create');
     }
 
+    /**
+     * @param  Request  $request
+     * @return RedirectResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -80,26 +86,83 @@ class PostController extends Controller
             ->withInput();
     }
 
-    public function show()
+    /**
+     * @param  int  $id
+     */
+    public function show(int $id)
     {
 
     }
 
     /**
+     * @param  int  $id
      * @return Application|Factory|View
+     * @throws Exception
      */
-    public function edit()
+    public function edit(int $id)
     {
-        return view('admin.post.partials.edit');
+        try {
+            $post = $this->postRepository->getPost($id);
+            return view('admin.post.partials.edit', ['post' => $post]);
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
-    public function update()
+    /**
+     * @param  Request  $request
+     * @param  int  $id
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function update(Request $request, int $id)
     {
+        $validator = Validator::make($request->all(), [
+            'titulo' => 'required|string',
+            'Texto' => 'required|string',
+        ]);
 
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->with(['error' => $validator->errors()->getMessages()])
+                ->withInput();
+        }
+
+        try {
+            $post = $this->postRepository->getPost($id);
+            $result = $this->postRepository->updatePost($post, $request->all());
+            if ($result) {
+                return redirect()
+                    ->route('admin.post.index')
+                    ->with('success', 'Depoimento atualizado!');
+            }
+            return redirect()
+                ->back()
+                ->with(['error' => 'Ocorreu um erro ao atualizar o depoimento!'])
+                ->withInput();
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
-    public function delete()
+    /**
+     * @param  int  $id
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function delete(int $id)
     {
-
+        try {
+            $post = $this->postRepository->getPost($id);
+            if ($this->postRepository->deletePost($post)) {
+                return response()->json([
+                    'message' => 'Removido com sucesso!'
+                ]);
+            }
+            throw new Exception('Não foi possível remover o depoimento!');
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 }
