@@ -59,6 +59,11 @@ class PostRepository
         return $this->model::create($params);
     }
 
+    /**
+     * @param  Post  $post
+     * @param  array  $params
+     * @return bool
+     */
     public function updatePost(Post $post, array $params)
     {
         $fileUpload = Arr::get($params, 'fileupload');

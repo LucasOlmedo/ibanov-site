@@ -26,3 +26,8 @@ Route::group(['prefix' => 'post'], function () {
         ->name('post.update');
     Route::delete('delete/{id}', 'PostController@delete')->name('post.delete');
 });
+
+Route::group(['prefix' => 'event'], function () {
+    Route::get('', 'EventController@index')->name('event.index');
+    Route::post('store', 'EventController@store')->name('event.store');
+});

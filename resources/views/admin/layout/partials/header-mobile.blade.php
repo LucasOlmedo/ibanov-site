@@ -22,6 +22,11 @@
                         <i class="fas fa-chart-bar"></i> Dashboard
                     </a>
                 </li>
+                <li class="{{ request()->route()->named('admin.event.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.event.index') }}">
+                        <i class="fa fa-calendar-check"></i> Eventos
+                    </a>
+                </li>
                 <li class="{{ request()->route()->named('admin.post.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.post.index') }}">
                         <i class="fas fa-file-text"></i> Depoimentos
