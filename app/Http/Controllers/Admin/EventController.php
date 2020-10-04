@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Repositories\Events\EventRepository;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -64,7 +65,6 @@ class EventController extends Controller
             'evt-start' => 'string',
             'evt-end' => 'string',
             'evt-desc' => 'string|required',
-//            'all-day' => 'required_without:evt-start,evt-end',
         ]);
 
         $result = $this->eventRepository->storeEvent($request->all());
@@ -74,5 +74,26 @@ class EventController extends Controller
             ]);
         }
         throw new Exception('Erro na criação do evento!');
+    }
+
+    /**
+     * @param $id
+     * @param  Request  $request
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function dragEvent($id, Request $request)
+    {
+        $event = $this->eventRepository->getEvent($id);
+        if ($event instanceof Event) {
+            $result = $this->eventRepository->updateEvent($event, $request->all());
+            if ($result) {
+                return response()->json([
+                    'success' => true,
+                ]);
+            }
+            throw new Exception('Erro na atualização do evento!');
+        }
+        throw new Exception('Não foi possivel localizar o evento!');
     }
 }

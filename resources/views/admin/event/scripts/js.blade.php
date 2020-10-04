@@ -9,8 +9,6 @@
         }
 
         function showEventForm(date) {
-            console.log(date);
-
             let txtTitle = '', viewId = '', input_allDay = false;
             switch (date.view.type) {
                 case 'dayGridMonth':
@@ -95,6 +93,38 @@
             });
         }
 
+        function dragEvent(event) {
+            console.log(event);
+
+            let inputData = {}, dragEvent = event.event;
+            inputData._token = `{{ csrf_token() }}`;
+            inputData.title = dragEvent.title;
+            inputData.startDate = dragEvent.startStr || moment(dragEvent.start).format('YYYY-MM-DD HH:mm:ss');
+            inputData.endDate = dragEvent.endStr
+                ? (dragEvent.allDay ?
+                    moment(dragEvent.endStr).subtract(1, 'day').format('YYYY-MM-DD')
+                    : dragEvent.endStr)
+                : (dragEvent.end
+                    ? moment(dragEvent.end).format('YYYY-MM-DD HH:mm:ss') : inputData.startDate);
+
+            if (!inputData.endDate) {
+                inputData.endDate = inputData.startDate;
+            }
+
+            if (dragEvent.allDay) {
+                inputData['all-day'] = dragEvent.allDay;
+            }
+            $.post(`event/drag/${dragEvent.id}`, inputData)
+                .done(res => {
+                    __toast.fire({icon: 'success', html: '&nbsp;&nbsp; Evento atualizado!'});
+                    $calendar.refetchEvents();
+                })
+                .fail(xhr => {
+                    __toast.fire({icon: 'error', html: '&nbsp;&nbsp; Erro ao atualizar evento!'});
+                    $calendar.refetchEvents();
+                });
+        }
+
         $(document).ready(function () {
             let divCalendar = document.getElementById('calendar');
             $calendar = new FullCalendar.Calendar(divCalendar, {
@@ -107,11 +137,17 @@
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
                 selectable: true,
+                dayMaxEvents: true,
+                editable: true,
+                startEditable: true,
                 dateClick: date => {
                     showEventForm(date);
                 },
                 select: date => {
                     showEventForm(date);
+                },
+                eventChange: event => {
+                    dragEvent(event);
                 },
                 events: {
                     url: '/admin/event/get-data',
