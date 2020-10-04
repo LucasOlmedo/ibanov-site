@@ -1,13 +1,17 @@
 @include('plugins.fullcalendar')
 @push('page-js')
     <script>
+        let $calendar = null;
+
         function changeAllDay(el) {
             let chk = $(el).prop('checked');
             $('.row-times input[type="time"]').val('').prop('disabled', chk);
         }
 
         function showEventForm(date) {
-            let txtTitle = '', viewId = '';
+            console.log(date);
+
+            let txtTitle = '', viewId = '', input_allDay = false;
             switch (date.view.type) {
                 case 'dayGridMonth':
                     viewId = 'month-view';
@@ -23,12 +27,14 @@
                     viewId = 'week-view';
                     if (date.hasOwnProperty('startStr')) {
                         let start = moment(date.startStr).format('DD/MM/YYYY HH:mm'),
-                            end = moment(date.endStr).subtract(1, 'day').format('DD/MM/YYYY HH:mm');
+                            end = date.allDay ? moment(date.endStr).subtract(1, 'day').format('DD/MM/YYYY HH:mm')
+                                : moment(date.endStr).format('DD/MM/YYYY HH:mm');
                         txtTitle = `${start} - ${end}`;
                     } else {
                         let allDay = date.allDay ? ' - Dia Inteiro' : moment(date.dateStr).format('HH:mm');
                         txtTitle = `${moment(date.dateStr).format('DD/MM/YYYY')} ${allDay}`;
                     }
+                    input_allDay = date.allDay;
                     break;
                 case 'timeGridDay':
                     viewId = 'day-view';
@@ -40,6 +46,7 @@
                         let allDay = date.allDay ? ' - Dia Inteiro' : moment(date.dateStr).format('HH:mm');
                         txtTitle = `${moment(date.dateStr).format('DD/MM/YYYY')} ${allDay}`;
                     }
+                    input_allDay = date.allDay;
                     break;
             }
 
@@ -67,8 +74,13 @@
                     inputData._token = `{{ csrf_token() }}`;
                     inputData.startDate = date.startStr || date.dateStr;
                     inputData.endDate = date.endStr
-                        ? moment(date.endStr).subtract(1, 'day').format('YYYY-MM-DD')
+                        ? (date.allDay ?
+                            moment(date.endStr).subtract(1, 'day').format('YYYY-MM-DD')
+                            : date.endStr)
                         : date.dateStr;
+                    if (input_allDay) {
+                        inputData['all-day'] = input_allDay;
+                    }
 
                     return $.post('event/store', inputData).done(res => res).fail(xhr => {
                         Swal.showValidationMessage(`Request failed: ${xhr.responseJSON.message}`);
@@ -78,13 +90,15 @@
             }).then(result => {
                 if (result.isConfirmed) {
                     __toast.fire({icon: 'success', html: '&nbsp;&nbsp;Evento cadastrado!'});
+                    $calendar.refetchEvents();
                 }
             });
         }
 
         $(document).ready(function () {
             let divCalendar = document.getElementById('calendar');
-            let calendar = new FullCalendar.Calendar(divCalendar, {
+            $calendar = new FullCalendar.Calendar(divCalendar, {
+                timeZone: 'America/Sao_Paulo',
                 locale: 'pt-br',
                 initialView: 'dayGridMonth',
                 headerToolbar: {
@@ -99,8 +113,11 @@
                 select: date => {
                     showEventForm(date);
                 },
+                events: {
+                    url: '/admin/event/get-data',
+                },
             });
-            calendar.render();
+            $calendar.render();
         });
     </script>
 @endpush

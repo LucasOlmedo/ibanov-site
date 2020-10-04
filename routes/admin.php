@@ -29,5 +29,6 @@ Route::group(['prefix' => 'post'], function () {
 
 Route::group(['prefix' => 'event'], function () {
     Route::get('', 'EventController@index')->name('event.index');
+    Route::get('get-data', 'EventController@getData')->name('event.get-data');
     Route::post('store', 'EventController@store')->name('event.store');
 });

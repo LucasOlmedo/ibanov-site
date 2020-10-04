@@ -18,8 +18,15 @@ use Illuminate\View\View;
  */
 class EventController extends Controller
 {
+    /**
+     * @var EventRepository
+     */
     private $eventRepository;
 
+    /**
+     * EventController constructor.
+     * @param  EventRepository  $eventRepository
+     */
     public function __construct(EventRepository $eventRepository)
     {
         $this->eventRepository = $eventRepository;
@@ -27,14 +34,19 @@ class EventController extends Controller
 
     /**
      * @param  Request  $request
-     * @return Application|Factory|JsonResponse|View
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            return response()->json(['data' => $this->eventRepository->getAllEvents()]);
-        }
         return view('admin.event.index');
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getData()
+    {
+        return response()->json($this->eventRepository->getAllEvents());
     }
 
     /**
@@ -52,7 +64,7 @@ class EventController extends Controller
             'evt-start' => 'string',
             'evt-end' => 'string',
             'evt-desc' => 'string|required',
-            'all-day' => 'required_without:evt-start,evt-end',
+//            'all-day' => 'required_without:evt-start,evt-end',
         ]);
 
         $result = $this->eventRepository->storeEvent($request->all());

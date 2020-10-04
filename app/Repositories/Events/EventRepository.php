@@ -34,7 +34,20 @@ class EventRepository
     public function getAllEvents()
     {
         $query = $this->model->newQuery();
-        return $query->get();
+        return $this->transformEventData($query->get());
+    }
+
+    private function transformEventData(Collection $events)
+    {
+        return $events->map(function (Event $event) {
+            return [
+                'id' => 'event_'.uniqid(),
+                'title' => $event->Titulo,
+                'start' => Carbon::parse($event->StartDate),
+                'end' => Carbon::parse($event->EndDate),
+                'editable' => false,
+            ];
+        });
     }
 
     /**
@@ -44,8 +57,8 @@ class EventRepository
     public function storeEvent(array $params)
     {
         $allDay = Arr::get($params, 'all-day', false);
-        $startDate = "{$params['startDate']} ".($allDay ? '00:00' : $params['evt-start']);
-        $endDate = "{$params['endDate']} ".($allDay ? '23:59' : $params['evt-end']);
+        $startDate = "{$params['startDate']} ".($allDay ? '00:00' : Arr::get($params, 'evt-start', ''));
+        $endDate = "{$params['endDate']} ".($allDay ? '23:59' : Arr::get($params, 'evt-end', ''));
         $newEvent = new Event;
         $newEvent->userID = auth()->user()->userID;
         $newEvent->StartDate = Carbon::parse($startDate);
