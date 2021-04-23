@@ -59,7 +59,7 @@
             templateView.find('.label-date-range').text(txtTitle);
             templateView.find('input[type="time"]').val('').prop('disabled', false);
             Swal.fire({
-                title: 'Novo evento',
+                title: 'Novo Evento',
                 html: templateView.show(),
                 confirmButtonText: 'Salvar',
                 showCancelButton: true,
@@ -94,8 +94,6 @@
         }
 
         function dragEvent(event) {
-            console.log(event);
-
             let inputData = {}, dragEvent = event.event;
             inputData._token = `{{ csrf_token() }}`;
             inputData.title = dragEvent.title;
@@ -140,6 +138,7 @@
                 dayMaxEvents: true,
                 editable: true,
                 startEditable: true,
+                droppable: true,
                 dateClick: date => {
                     showEventForm(date);
                 },

@@ -50,8 +50,6 @@ class EventRepository
                 'title' => $event->Titulo,
                 'start' => Carbon::parse($event->StartDate),
                 'end' => Carbon::parse($event->EndDate),
-                'editable' => true,
-                'startEditable' => true,
             ];
         });
     }
