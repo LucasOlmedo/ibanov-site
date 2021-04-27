@@ -32,4 +32,8 @@ Route::group(['prefix' => 'event'], function () {
     Route::get('get-data', 'EventController@getData')->name('event.get-data');
     Route::post('store', 'EventController@store')->name('event.store');
     Route::post('drag/{id}', 'EventController@dragEvent')->name('event.drag');
+    Route::get('get/{id}', 'EventController@show')->name('event.show');
+    Route::match(['put', 'patch', 'post'], 'update/{id}', 'EventController@update')
+        ->name('event.update');
+    Route::delete('delete/{id}', 'EventController@deleteEvent')->name('event.delete');
 });

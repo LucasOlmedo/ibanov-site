@@ -50,7 +50,7 @@ class UserController extends Controller
     /**
      * @param  Request  $request
      * @return JsonResponse|void
-     * @throws ValidationException
+     * @throws Exception
      */
     public function store(Request $request)
     {

@@ -1,7 +1,9 @@
 @include('plugins.fullcalendar')
+@include('plugins.custom-loadTable')
 @push('page-js')
     <script>
         let $calendar = null;
+        let _tableEvent;
 
         function changeAllDay(el) {
             let chk = $(el).prop('checked');
@@ -123,8 +125,126 @@
                 });
         }
 
+        function loadTableEvent() {
+            return $('.table-event').loadTable({
+                url: `{{ route('admin.event.get-data') }}`,
+                columns: [
+                    {data: ['title'], title: 'Título'},
+                    {data: ['user'], title: 'Criado por'},
+                    {
+                        data: ['start'], title: 'Início', render: (title, data) => {
+                            let date = data.shift();
+                            return moment(date).format('DD/MM/YYYY HH:mm');
+                        }
+                    },
+                    {
+                        data: ['end'], title: 'Fim', render: (title, data) => {
+                            let date = data.shift();
+                            return moment(date).format('DD/MM/YYYY HH:mm');
+                        }
+                    },
+                    {
+                        data: ['id'], title: 'Opções', render: (title, data, item) => {
+                            if (__authUser.sysAdmin) {
+                                let id = data.shift();
+                                return '<div class="table-data-feature">' +
+                                    '<button onclick="updateEvent(' + id + ')" class="item" data-toggle="tooltip" ' +
+                                    'data-placement="top" title="Alterar">' +
+                                    '<i class="zmdi zmdi-edit text-warning"></i>' +
+                                    '</button>' +
+                                    '<button onclick="deleteEvent(' + id + ')" class="item" data-toggle="tooltip" ' +
+                                    'data-placement="top" title="Remover">' +
+                                    '<i class="zmdi zmdi-delete text-danger"></i>' +
+                                    '</button>' +
+                                    '</div>';
+                            }
+                            return '';
+                        },
+                    },
+                ],
+                afterInit: () => {
+                    $('[data-toggle="tooltip"]').tooltip();
+                },
+            });
+        }
+
+        function updateEvent(id) {
+            let $form = $('#form-edit-event'), $loadForm = $('#loader-edit');
+            $('#modal-edit-event').modal('show');
+            $.ajax({
+                url: `/admin/event/get/${id}`,
+                type: 'get',
+                beforeSend: () => {
+                    $form.find('input').prop('readonly', true);
+                    $form.find('button').prop('disabled', true);
+                    $loadForm.css('display', 'flex');
+                    $form.trigger('reset');
+                },
+                success: response => {
+                    $form.find('input').prop('readonly', false);
+                    $form.find('button').prop('disabled', false);
+                    if (response != null) {
+                        for (let k in response) {
+                            $form.find(`[name="${k}"]`).val(response[k]);
+                        }
+                    }
+                    $loadForm.css('display', 'none');
+                },
+                error: err => {
+                    $form.find('input').prop('readonly', false);
+                    $form.find('button').prop('disabled', false);
+                    $loadForm.css('display', 'none');
+                    let errors = err.responseJSON.errors, message = ' ';
+                    if (errors) {
+                        for (let er in errors) {
+                            message = errors[er].join('<br>');
+                        }
+                    } else {
+                        message = err.responseJSON.message;
+                    }
+                    __toast.fire({icon: 'error', title: ' ', html: `&nbsp;&nbsp;${message}`});
+                },
+            });
+        }
+
+        function deleteEvent(id) {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Tem certeza que deseja remover o evento?',
+                showCancelButton: true,
+                confirmButtonText: 'Remover',
+                showLoaderOnConfirm: true,
+                cancelButtonText: 'Fechar',
+                preConfirm: () => {
+                    return fetch(`/admin/event/delete/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': `{{ csrf_token() }}`,
+                        },
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText)
+                        }
+                        return response.json();
+                    }).catch(() => {
+                        Swal.showValidationMessage('Ocorreu um erro ao remover o evento!')
+                    });
+                },
+                allowOutsideClick: () => !Swal.isLoading(),
+            }).then((result) => {
+                if (result.value) {
+                    __toast.fire({
+                        icon: 'success',
+                        title: `&nbsp;&nbsp;Evento removido!`
+                    });
+                    _tableEvent.loadTable('reload');
+                }
+            })
+        }
+
         $(document).ready(function () {
-            let divCalendar = document.getElementById('calendar');
+            let divCalendar = document.getElementById('calendar'), $formEdit = $('#form-edit-event');
             $calendar = new FullCalendar.Calendar(divCalendar, {
                 timeZone: 'America/Sao_Paulo',
                 locale: 'pt-br',
@@ -153,6 +273,46 @@
                 },
             });
             $calendar.render();
+
+            $formEdit.on('submit', function (e) {
+                e.preventDefault();
+                let id = $formEdit.find('input[name="agendaID"]').val(), $loadForm = $('#loader-edit');
+                $.ajax({
+                    url: `/admin/event/update/${id}`,
+                    data: $formEdit.serialize(),
+                    type: 'PUT',
+                    beforeSend: () => {
+                        $formEdit.find('input').prop('readonly', true);
+                        $formEdit.find('button').prop('disabled', true);
+                        $loadForm.css('display', 'flex');
+                    },
+                    success: response => {
+                        $formEdit.find('input').prop('readonly', false);
+                        $formEdit.find('button').prop('disabled', false);
+                        $loadForm.css('display', 'none');
+                        $formEdit.trigger('reset');
+                        $('#modal-edit-event').modal('hide');
+                        __toast.fire({icon: 'success', html: `&nbsp;&nbsp;${response.message}`});
+                        _tableEvent.loadTable('reload');
+                    },
+                    error: err => {
+                        $formEdit.find('input').prop('readonly', false);
+                        $formEdit.find('button').prop('disabled', false);
+                        $loadForm.css('display', 'none');
+                        let errors = err.responseJSON.errors, message = ' ';
+                        if (errors) {
+                            for (let er in errors) {
+                                message = errors[er].join('<br>');
+                            }
+                        } else {
+                            message = err.responseJSON.message;
+                        }
+                        __toast.fire({icon: 'error', title: ' ', html: `&nbsp;&nbsp;${message}`});
+                    },
+                });
+            });
+
+            _tableEvent = loadTableEvent();
         });
     </script>
 @endpush

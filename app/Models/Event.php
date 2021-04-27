@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -46,4 +47,22 @@ class Event extends Model
         'DateUpd',
         'Deleted',
     ];
+
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'Titulo',
+        'Texto',
+        'StartDate',
+        'EndDate',
+    ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userID');
+    }
 }

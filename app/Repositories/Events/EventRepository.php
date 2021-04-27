@@ -34,7 +34,8 @@ class EventRepository
      */
     public function getAllEvents()
     {
-        $query = $this->model->newQuery();
+        $query = $this->model->newQuery()->orderByDesc('StartDate')
+            ->orderByDesc('EndDate');
         return $this->transformEventData($query->get());
     }
 
@@ -48,8 +49,9 @@ class EventRepository
             return [
                 'id' => $event->agendaID,
                 'title' => $event->Titulo,
-                'start' => Carbon::parse($event->StartDate),
-                'end' => Carbon::parse($event->EndDate),
+                'user' => $event->user->nome,
+                'start' => Carbon::parse($event->StartDate)->format('Y-m-d H:i:s'),
+                'end' => Carbon::parse($event->EndDate)->format('Y-m-d H:i:s'),
             ];
         });
     }
@@ -88,7 +90,7 @@ class EventRepository
      * @param  array  $params
      * @return bool
      */
-    public function updateEvent(Event $event, array $params)
+    public function updateDragEvent(Event $event, array $params)
     {
         $allDay = Arr::get($params, 'all-day', false);
         if (Arr::get($params, 'startDate')) {
@@ -102,5 +104,15 @@ class EventRepository
         $event->Titulo = Arr::get($params, 'evt-title', $event->Titulo);
         $event->Texto = Arr::get($params, 'evt-desc', $event->Texto);
         return $event->save();
+    }
+
+    /**
+     * @param  Event  $event
+     * @param  array  $params
+     * @return bool
+     */
+    public function updateEvent(Event $event, array $params)
+    {
+        return $event->update($params);
     }
 }
